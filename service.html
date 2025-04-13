@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services - AAA Power Enterprises</title>
+  <link rel="shortcut icon" href="/logo/AAA.png" type="image/x-icon">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: #333;
+    }
+    .Enter {
+      display: flex;
+      justify-content:center;
+      margin-top: 20px;
+    }
+    .En {
+      margin-top: 20px;
+      margin-left: 30px;
+    }
+    .Enter img {
+      height: 100px;
+      width: 130px;
+      margin-top:-5px;
+    }
+    .Enter h1 {
+      font-family:Georgia, 'Times New Roman', Times, serif;
+      font-size:2.5rem;
+      margin-top: 1px;
+      margin-bottom: -7px;
+    }
+    .Enter h3 {
+      font-size: smaller;
+    }
+
+    @media (max-width: 768px) {
+      .Enter {
+        margin-right: 5px;
+      }
+      .En {
+        margin-left: 10px;
+        margin-bottom: 15px;
+      }
+      .Enter h1 {
+        font-size: 2rem;
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .Enter img {
+        height:50px;
+        width:60px;
+        margin-top: 15px;
+        margin-left: 5px;
+      }
+      .Enter h1 {
+        font-size:15px;
+        margin-bottom: 5px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: 1500;
+      }
+      .Enter h3 {
+        font-size:8px;
+        margin-right: 5px;
+      }
+      .En {
+        margin-top: 10px;
+      }
+    }
+
+    .navbar {
+      background-color: #2c3e50;
+      color: white;
+      padding: 1rem 2rem;
+      position: relative;
+      margin-top: 15px;
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size:15px;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-item {
+      padding: 0.5rem 0;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #3498db;
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      position: relative;
+      z-index: 100;
+    }
+
+    .bar {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: white;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    .menu-toggle.active .bar:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    .menu-toggle.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active .bar:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: #2c3e50;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+        transition: right 0.5s ease;
+        z-index: 99;
+      }
+      .nav-menu.active {
+        right: 0;
+      }
+      .navbar {
+        padding: 1rem;
+        width: 113%;
+      }
+    }
+
+    .container {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    p.subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .filter-buttons button {
+      padding: 10px 18px;
+      border: none;
+      background-color: #f1f1f1;
+      color: #333;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .filter-buttons button:hover {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .filter-buttons button.active {
+      background-color: #2c3e50;
+      color: white;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section h3 {
+      font-size: 1.8rem;
+      border-left: 6px solid #2c3e50;
+      padding-left: 12px;
+      margin-bottom: 20px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0px 1px 5px;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .service-card h4 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      color: #2c3e50;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-left: 36px;
+    }
+    .service-card img {
+      width: 184px;
+      height: 185px;
+      /* border-radius: 100%; */
+      justify-content: center;
+      align-items: center;
+      margin-left: 29px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .container h2 
+      {
+        margin-left: -28px;
+        width: 139%;
+        font-size: 25px;
+      }
+      .container p.subtitle
+      {
+        margin-left: 32px;
+        font-size: 18px;
+        width: 101%;
+      }
+      .filter-buttons
+      {
+        width: 404px;
+        margin-left: -4px;
+      }
+      .section
+      {
+      margin-left: 102px;
+      }
+      .service-card
+      {
+        box-shadow: 0px 0px 6px;
+        width: 113%;
+        margin-left: -60px;
+      }
+    }
+    .form1 {
+    background-color: #2c3e50;
+    padding: 30px 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    max-width:900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 480px) {
+  .form1{
+    margin-left: 53px;
+    width: 82%;
+  }
+}
+.form1 h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.form1 form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.form1 input {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    min-width: 200px;
+    flex-grow: 1;
+}
+
+.form1 input:focus {
+    outline: 2px solid #3498db;
+}
+
+.form1 button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form1 button:hover {
+    background-color: #c0392b;
+}
+
+.footer {
+    background-color:#2c3e50;
+    color: rgb(255, 255, 255);
+    padding: 60px 0 30px;
+    margin-top: 40px;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+  
+  .footer-col h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  
+  .footer-col h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--secondary-color);
+  }
+  
+  .footer-col p {
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .footer-links {
+    list-style: none;
+  }
+  
+  .footer-links li {
+    margin-bottom: 12px;
+  }
+  
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+  }
+  
+  .footer-links a:hover {
+    color: white;
+    padding-left: 5px;
+  }
+  
+  .contact-info {
+    list-style: none;
+  }
+  
+  .contact-info li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .contact-info i {
+    margin-right: 10px;
+    color: var(--secondary-color);
+    margin-top: 3px;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+  }
+  
+  .footer-bottom {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px 0;
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .footer-bottom p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .footer
+    {
+        width: 122%;
+        margin-top: 20px;
+    }
+    .footer-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .footer-col {
+      margin-bottom: 30px;
+    }
+    
+    .footer-col h3 {
+      margin-bottom: 15px;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="Enter">
+    <img src="/logo/AAA.png" alt="AAA-Enterprises" />
+    <div class="En">
+      <h1>AAA POWER ENTERPRISES</h1>
+      <h3>Add- Shop No.68, Sattar Auto Garrage, Sant Mary Church Road, Kalina Donger, Santacruz East, Mumbai 400029</h3>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="#" class="logo">AAA POWER ENTERPRISES</a>
+      <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="/Html/index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="/Html/aa.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="/Services/service.html" class="nav-link">Services</a></li>
+        <li class="nav-item"><a href="/Html/contactus.html" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>Our Complete Range of Services</h2>
+    <p class="subtitle">From interior renovations to exterior upgrades, we handle every aspect of your home or property.</p>
+
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All Services</button>
+      <button class="filter-btn" data-filter="interior">Interior Work</button>
+      <button class="filter-btn" data-filter="exterior">Exterior Work</button>
+    </div>
+
+    <div class="section filter-section interior">
+      <h3>Interior Work</h3>
+      <div class="services-grid">
+        <div class="service-card">
+          <h4>Painting</h4>
+          <img src="/logo/pa.avif" alt="">
+          <p>Transforming spaces with professional painting and impeccable results.</p>
+        </div>
+        <div class="service-card">
+          <h4>Wallpaper</h4>
+          <img src="/logo/wall.avif" alt="">
+          <p>Enhance your space with expert  wallpaper installation.</p>
+        </div>
+        <div class="service-card">
+          <h4>Celing</h4>
+          <img src="/logo/ce.jpg" alt="">
+          <p>We Can Convert Your Ceiling By Applying Design On It</p>
+        </div>
+        <div class="service-card">
+          <h4>Furniture</h4>
+          <img src="/logo/furniture.avif" alt="">
+          <p>Transform your home with our exquisite furniture, crafted for lasting beauty and comfort</p>
+        </div>
+      
+        <div class="service-card">
+          <h4>Home Rewiring</h4>
+          <img src="/logo/homerenovation.jpg" alt="">
+          <p>Safe and professional complete rewiring of your property.</p>
+        </div>
+        <div class="service-card">
+          <h4>Lighting Installation</h4>
+          <img src="/logo/light.avif" alt="">
+          <p>Indoor and outdoor lighting solutions for all areas.</p>
+        </div>
+    
+        <div class="service-card">
+          <h4>Flooring Installation</h4>
+          <img src="/logo/flo.jpg" alt="">
+          <p>Hardwood, tile, and vinyl flooring solutions for every room.</p>
+        </div>
+        <div class="service-card">
+          <h4>Modular Kitchen Setup</h4>
+          <img src="/logo/mk.avif" alt="">
+          <p>Modern and functional kitchen installations and upgrades.</p>
+        </div>
+        <div class="service-card">
+          <h4>Bathroom Remodeling</h4>
+          <img src="/logo/bm.webp" alt="">
+          <p>Upgrade your bathroom with new fittings, tiles, and fixtures.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section filter-section exterior">
+      <h3>Exterior Work</h3>
+      <div class="services-grid">
+        <div class="service-card">
+          <h4>Roof Repair & Maintenance</h4>
+          <img src="/logo/rf.jpg" alt="">
+          <p>Ensure your roof is secure, leak-free, and weather-ready.</p>
+        </div>
+        <div class="service-card">
+          <h4>Garden Landscaping</h4>
+          <img src="/logo/gg.jpg" alt="">
+          <p>Create beautiful outdoor spaces with our landscape design team.</p>
+        </div>
+        <div class="service-card">
+          <h4>Wall Cladding & Painting</h4>
+          <img src="/logo/ww.jpg" alt="">
+          <p>Protect and beautify exterior walls with high-quality finishes.</p>
+        </div>
+        <div class="service-card">
+          <h4>Driveway & Pathway Paving</h4>
+          <img src="/logo/dd.jpg" alt="">
+          <p>Durable and stylish paving for your driveways and walkways.</p>
+        </div>
+      </div>
+    </div>
+
+
+      </div>
+    </div>
+  </div>
+  <div class="form1">
+    <h1>Request Service Today</h1>
+    <form action="https://api.web3forms.com/submit" method="post" class="form">
+      <input type="hidden" name="access_key" value="b037b62a-c3bd-4630-ae0d-6ed5085d46c0">
+      <input type="text" placeholder="Name" name="name" required />
+      <input type="email" placeholder="Email" name="email" required />
+      <input type="tel" placeholder="Phone Number" name="phone" required />
+      <input type="text" placeholder="Description" name="phone" required />
+      <button type="submit">Request</button>
+    </form>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.filter-btn');
+    const sections = document.querySelectorAll('.filter-section');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const filter = button.getAttribute('data-filter');
+
+        sections.forEach(section => {
+          if (filter === 'all') {
+            section.classList.remove('hidden');
+          } else {
+            section.classList.toggle('hidden', !section.classList.contains(filter));
+          }
+        });
+      });
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      const navMenu = document.querySelector('.nav-menu');
+
+      mobileMenu.addEventListener('click', function() {
+        mobileMenu.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
+      });
+
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.remove('active');
+          navMenu.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        });
+      });
+    });
+  </script>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>About Us</h3>
+        <p>
+          We are a team of certified professionals dedicated to providing
+          top-quality electrical, HVAC, networking, and solar services to our
+          community.
+        </p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="/Html/index.html">Home</a></li>
+          <li><a href="/Services/service.html">Services</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Our Services</h3>
+        <ul class="footer-links">
+          <li><a href="#">Electrical Services</a></li>
+          <li><a href="#">HVAC Installation</a></li>
+          <li><a href="#">Network Solutions</a></li>
+          <li><a href="#">Solar Energy</a></li>
+          <li><a href="#">Maintenance</a></li>
+          <li><a href="#">Emergency Repairs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contact Us</h3>
+        <ul class="contact-info">
+          <li>
+            <i class="fas fa-map-marker-alt"></i>
+            <span>
+              Add- Shop No.68, Sattar Auto Garrage, Sant Mary Church Road,
+              Kalina Donger, Santacruz East, Mumbai 400029</span
+            >
+          </li>
+          <li>
+            <i class="fas fa-phone-alt"></i>
+            <span>+91 9594350744</span>
+          </li>
+          <li>
+            <i class="fas fa-envelope"></i>
+            <span>info@yourcompany.com</span>
+          </li>
+          <li>
+            <i class="fas fa-clock"></i>
+            <span>Mon-Fri: 8AM - 6PM<br />Sat: 9AM - 3PM</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; AAA POWER ENTERPRISES. All Rights Reserved. | Designed with ❤️
+        by Your Khan Obaid
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
