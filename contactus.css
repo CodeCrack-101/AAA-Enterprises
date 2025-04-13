@@ -524,3 +524,15 @@ height: fit-content;
     }
     
   }
+  .fa-facebook-f:before {
+    content: "\f39e";
+    color: rgb(98, 17, 230);
+
+}
+
+.fa-instagram:before {
+  color: red;
+}
+.fa-twitter:before {
+  color: rgb(24, 103, 214);
+}
