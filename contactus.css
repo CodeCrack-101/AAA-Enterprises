@@ -533,3 +533,7 @@ height: fit-content;
 .fa-twitter:before {
   color: rgb(24, 103, 214);
 }
+.fa-linkedin-in:before
+{
+color: rgb(44, 44, 161);
+}
