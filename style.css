@@ -33,7 +33,30 @@ font-size: smaller;
 color: #2c3e50;
 }
 
-
+.fa-award:before 
+{
+  color: #f08c2d;
+}
+.fa-clock:before 
+{
+  color: #f08c2d;
+}
+.fa-hand-holding-usd:before 
+{
+  color: #f08c2d;
+}
+.fa-shield-alt:before
+{
+  color: #f08c2d;
+}
+.fa-tools:before
+{
+  color: #f08c2d;
+}
+.fa-heart:before
+{
+  color: #f08c2d;
+}
 
 /* Medium devices (tablets, 768px and below) */
 @media (max-width: 768px) {
